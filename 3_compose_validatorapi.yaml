@@ -1,0 +1,15 @@
+services:
+
+  validator_api:
+    container_name: "nym_validator_api"
+    image: "mixmatch/nym-validator-api:v1.0.1-new"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_validator_api is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "OPEN_API_BASE=/v1/"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"

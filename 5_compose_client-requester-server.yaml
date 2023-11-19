@@ -1,0 +1,14 @@
+services:
+
+  client_requester_server:
+    container_name: "nym_client_requester_server_${mixcorr_exp_run}"
+    image: "mixmatch/nym-client-requester-server:nym-binaries-1.0.2"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_client_requester_server_${mixcorr_exp_run} is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "mixcorr_exp_id=${mixcorr_exp_id}"
+      - "mixcorr_exp_run=${mixcorr_exp_run}"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"

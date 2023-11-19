@@ -1,0 +1,11 @@
+services:
+
+  validator:
+    container_name: "nym_validator"
+    image: "mixmatch/nym-validator:v27.0"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_validator is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"

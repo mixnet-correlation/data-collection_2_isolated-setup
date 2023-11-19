@@ -1,0 +1,11 @@
+services:
+
+  busybox:
+    container_name: "nym_busybox"
+    image: "mixmatch/nym-busybox:v1.0.0"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_busybox is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"

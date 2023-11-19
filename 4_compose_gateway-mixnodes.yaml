@@ -1,0 +1,54 @@
+services:
+
+  gateway:
+    container_name: "nym_gateway"
+    image: "mixmatch/nym-gateway:nym-binaries-1.0.2"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_gateway is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "mixcorr_gateway_sphinxflow_dir=/root/data/gateway_sphinxflows"
+      - "WALLET_ADDRESS=n12ktdxa9qe6nqpydfvxp3t92qy7rmq3nmjp8h9s"
+      - "ID=nym-gateway"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"
+
+  mixnode_one:
+    container_name: "nym_mixnode_one"
+    image: "mixmatch/nym-mixnode:nym-binaries-1.0.2"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_mixnode_one is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "WALLET_ADDRESS=n18nck8fq9md3xwv9le0zefzaqhjulwg7xc3lk84"
+      - "MIXNODE_IDENTITY_KEY=mixnode-binary-0"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"
+
+  mixnode_two:
+    container_name: "nym_mixnode_two"
+    image: "mixmatch/nym-mixnode:nym-binaries-1.0.2"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_mixnode_two is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "WALLET_ADDRESS=n1up2pjh5q736tcnrmt9uz0jjh2zu08dm4lfr60p"
+      - "MIXNODE_IDENTITY_KEY=mixnode-binary-1"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"
+
+  mixnode_three:
+    container_name: "nym_mixnode_three"
+    image: "mixmatch/nym-mixnode:nym-binaries-1.0.2"
+    pull_policy: "never"
+    restart: "no"
+    entrypoint: "bash -c 'printf \"nym_mixnode_three is running, will sleep forever now...\n\" && sleep infinity'"
+    env_file: "./nym_env_variables.env"
+    environment:
+      - "WALLET_ADDRESS=n1rvsjchsyzj8ak4n29c4psvpp45wnyn0usy8gsz"
+      - "MIXNODE_IDENTITY_KEY=mixnode-binary-2"
+    volumes:
+      - "${mixcorr_res_dir}:/root/data"
