@@ -1,4 +1,4 @@
-# Bootstrapped-Nym Data Collection on Hetzner
+# Dataset Collection Orchestrator in the Isolated Setup, PoPETs 2024.2 paper "MixMatch"
 
 Dataset collection orchestrator in the Isolated Setup for PoPETs 2024.2 paper "MixMatch: Flow Matching for Mixnet Traffic".
 
